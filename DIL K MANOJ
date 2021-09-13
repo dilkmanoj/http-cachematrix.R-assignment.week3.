@@ -1,0 +1,26 @@
+# http-cachematrix.R-assignment.week3.
+makeCacheMatrix <- function(x = matrix()) {
+  inv <- NULL
+  set <- function(y) {
+    x <<- y
+    inv <<- NULL
+  }
+  get <- function() x
+  setinverse <- function(solve){ inv <<- inverse}
+  getinverse <- function() {inv}
+  list(set = set, get = get,
+       setinverse = setinverse,
+       getinverse = getinverse)
+}
+
+cacheSolve <- function(x, ...) {
+  s <- x$getinverse()
+  if(!is.null(s)) {
+    message("getting inversed matrix")
+    return(inv)
+  }
+  data <- x$get()
+  inv <- solve(data, ...)
+  x$setinverse(inv)
+  inv
+}
